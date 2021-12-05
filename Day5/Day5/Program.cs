@@ -16,7 +16,7 @@ public static class Day5
             .Select(ParseStringToLine)
             .Where(line => line.IsHorizontal || line.IsVertical)
             .SelectMany(line => line.AllPoints)
-            .GroupBy(point => (point.X, point.Y))
+            .GroupBy(point => point)
             .Select(grp => new { Point = grp.Key, Amount = grp.Count() })
             .Where(grp => grp.Amount >= 2)
             .ToList();  // 7674
@@ -24,7 +24,7 @@ public static class Day5
         var task2 = File.ReadAllLines("input.txt")
             .Select(ParseStringToLine)
             .SelectMany(line => line.AllPoints)
-            .GroupBy(point => (point.X, point.Y))
+            .GroupBy(point => point)
             .Select(grp => new { Point = grp.Key, Amount = grp.Count() })
             .Where(grp => grp.Amount >= 2)
             .ToList();  // 20898
