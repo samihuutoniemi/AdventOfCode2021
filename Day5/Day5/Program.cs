@@ -24,14 +24,12 @@
             var task2 = File.ReadAllLines("input.txt")
                 .Select(ParseStringToLine)
                 .SelectMany(line => line.AllPoints)
-                .OrderBy(p => p.X).ThenBy(p => p.Y)
                 .GroupBy(point => (point.X, point.Y))
                 .Select(grp => new { Point = grp.Key, Amount = grp.Count() })
                 .Where(grp => grp.Amount >= 2)
                 .ToList();  // 20898
 
             return;
-
         }
     }
 
