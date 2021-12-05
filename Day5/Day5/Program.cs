@@ -37,8 +37,8 @@ public record Point(int X, int Y);
 
 public class Line
 {
-    public Point P1 { get; set; }
-    public Point P2 { get; set; }
+    public Point P1 { get; init; }
+    public Point P2 { get; init; }
 
     public Line(Point p1, Point p2)
     {
@@ -48,6 +48,7 @@ public class Line
 
     public bool IsHorizontal => P1.Y == P2.Y;
     public bool IsVertical => P1.X == P2.X;
+
     public Point[] AllPoints
     {
         get
