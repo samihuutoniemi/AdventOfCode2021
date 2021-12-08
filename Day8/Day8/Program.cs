@@ -36,7 +36,7 @@ static class Day8
 
     static string AlphabetizeWord(string s) => string.Join("", s.ToArray().OrderBy(c => c));
 
-    static void AssignValues(Dictionary<string,int?> dict)
+    static void AssignValues(Dictionary<string, int?> dict)
     {
         // 1
 
@@ -61,7 +61,7 @@ static class Day8
         //2,3,5
 
         var keys235 = dict.Where(d => d.Key.Length == 5).Select(x => x.Key).ToArray();
-        var uniqueLetters = keys235.SelectMany(key => key.ToArray()).GroupBy(x=>x).Where(x=>x.Count()==1).Select(x=>x.Key).ToList();
+        var uniqueLetters = keys235.SelectMany(key => key.ToArray()).GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key).ToList();
         var key3 = keys235.FirstOrDefault(key => !key.Any(c => uniqueLetters.Any(ul => c == ul)));
 
         dict[key3] = 3;
@@ -82,7 +82,7 @@ static class Day8
         var key9 = keys069.FirstOrDefault(k => key5.All(k5 => k.Contains(k5)) && dict.FirstOrDefault(d => d.Key.Length == 3).Key.All(k7 => k.Contains(k7)));
         dict[key9] = 9;
 
-        var rest = dict.Where(d => d.Value is null).Select(d=>d.Key).ToList();
+        var rest = dict.Where(d => d.Value is null).Select(d => d.Key).ToList();
 
         var key0 = rest.FirstOrDefault(k => dict.FirstOrDefault(d => d.Key.Length == 3).Key.All(k7 => k.Contains(k7)));
 
